@@ -1,0 +1,4 @@
+#Wed Nov 18 16:25:36 EET 2020
+base.0=C\:\\prj\\AndroidStudioProjects\\money_manager\\front_end\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
