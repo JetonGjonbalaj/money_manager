@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Jeton\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Jeton\\.nuget\\packages"
+    ]
+  }
+}
