@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget{
                           crossAxisAlignment: CrossAxisAlignment.baseline,
                           textBaseline: TextBaseline.alphabetic,
                           children: <Widget>[
-                            Text("Fitim Canolli", style: Theme.of(context).textTheme.headline5),
+                            Text("Fitim Cakolli", style: Theme.of(context).textTheme.headline5),
                             Text("Free user", style: Theme.of(context).textTheme.bodyText2)
                           ],
                         )
