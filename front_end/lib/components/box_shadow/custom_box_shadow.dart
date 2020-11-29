@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+// Constants
+import '../../constants.dart';
+
 class CustomBoxShadow extends StatelessWidget {
   final Widget child;
   final double width;
@@ -22,7 +25,7 @@ class CustomBoxShadow extends StatelessWidget {
         ]
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+        padding: EdgeInsets.all(defaultPadding),
         child: this.child
       )
     );

@@ -13,11 +13,13 @@ class UpcomingExpensesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return ListView.separated(
+      clipBehavior: Clip.none,
       scrollDirection: Axis.horizontal,
       itemCount: upcomingExpenses.length,
       itemBuilder: (BuildContext context, int index) => 
         UpcomingExpenseWidget(upcomingExpense: upcomingExpenses[index]),
+      separatorBuilder: (BuildContext context, int index) => SizedBox(width: 10),
     );
   }
 }

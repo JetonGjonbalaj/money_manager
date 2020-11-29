@@ -3,11 +3,8 @@ import 'package:flutter/material.dart';
 // Constants
 import './constants.dart';
 
-// Models
-import './models/upcoming_expense.dart';
-
-// Components
-import './components/upcoming_expense/upcoming_expense_list.dart';
+// Screens
+import './screens/homepage.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,21 +20,18 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         backgroundColor: Colors.white,
         primaryColor: Colors.black,
-        textTheme: Theme.of(context).textTheme.apply(bodyColor: textColor),
+        textTheme: TextTheme(
+          headline1: TextStyle(color: Colors.black),
+          headline2: TextStyle(color: Colors.black),
+          headline3: TextStyle(color: Colors.black),
+          headline4: TextStyle(color: Colors.black),
+          headline5: TextStyle(color: Colors.black),
+          headline6: TextStyle(color: Colors.black),
+          bodyText1: TextStyle(fontWeight: FontWeight.normal, fontSize: 20.0),
+          bodyText2: TextStyle(fontWeight: FontWeight.w100, fontSize: 16.0)
+        ),
       ),
-      home: Scaffold(
-        body: UpcomingExpensesList(upcomingExpenses:  [
-          UpcomingExpense(expense: 30, daysLeft: "2 days"),
-          UpcomingExpense(expense: 30, daysLeft: "2 days"),
-          UpcomingExpense(expense: 30, daysLeft: "2 days"),
-          UpcomingExpense(expense: 30, daysLeft: "2 days"),
-          UpcomingExpense(expense: 30, daysLeft: "2 days"),
-          UpcomingExpense(expense: 30, daysLeft: "2 days"),
-          UpcomingExpense(expense: 30, daysLeft: "2 days"),
-          UpcomingExpense(expense: 30, daysLeft: "2 days"),
-          UpcomingExpense(expense: 30, daysLeft: "2 days"),
-        ])
-      ),
+      home: HomePage()
     );
   }
 }

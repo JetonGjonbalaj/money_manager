@@ -10,11 +10,13 @@ class Layout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.only(left: defaultPadding, right: defaultPadding),
-        child: this.child,
-      ),
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.only(left: defaultPadding, right: defaultPadding, top: defaultPadding),
+          child: this.child,
+        ),
+      ) 
     );
   }
 }
