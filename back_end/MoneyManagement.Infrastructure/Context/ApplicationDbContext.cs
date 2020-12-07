@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MoneyManagement.Application.Interfaces;
+using MoneyManagement.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,13 @@ namespace MoneyManagement.Infrastructure.Context
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
         {
+        }
+
+        public DbSet<Product> Products { get; set; }
+
+        public async Task<int> SaveChangesAsync()
+        {
+            return await base.SaveChangesAsync();
         }
     }
 }

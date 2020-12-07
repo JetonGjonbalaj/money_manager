@@ -132,8 +132,9 @@ class HomePage extends StatelessWidget{
                   SizedBox(height: 10.0),
 
                   Container(
-                    height: (74.0 * expenseName.length),
+                    // height: (74.0 * expenseName.length),
                     child: ListView.separated(
+                      shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: expenseName.length,
                       scrollDirection: Axis.vertical,

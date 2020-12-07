@@ -4,5 +4,40 @@
         <name>BackEndAPI</name>
     </assembly>
     <members>
+        <member name="M:BackEndAPI.Controllers.ProductController.Create(MoneyManagement.Application.Features.ProductFeatures.Commands.CreateProduct.CreateProductCommand)">
+            <summary>
+            Creates a New Product.
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BackEndAPI.Controllers.ProductController.GetAll">
+            <summary>
+            Gets all Products.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BackEndAPI.Controllers.ProductController.GetById(System.Int32)">
+            <summary>
+            Gets Product Entity by Id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BackEndAPI.Controllers.ProductController.Delete(System.Int32)">
+            <summary>
+            Deletes Product Entity based on Id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BackEndAPI.Controllers.ProductController.Update(System.Int32,MoneyManagement.Application.Features.ProductFeatures.Commands.UpdateProduct.UpdateProductCommand)">
+            <summary>
+            Updates the Product Entity based on Id.   
+            </summary>
+            <param name="id"></param>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
