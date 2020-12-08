@@ -50,7 +50,7 @@ namespace BackEndAPI.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("[action]/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             return Ok(await Mediator.Send(new DeleteProductByIdCommand { Id = id }));
