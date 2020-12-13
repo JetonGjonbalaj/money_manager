@@ -4,6 +4,7 @@ using MoneyManagement.Application.Features.ProductFeatures.Commands.DeleteProduc
 using MoneyManagement.Application.Features.ProductFeatures.Commands.UpdateProduct;
 using MoneyManagement.Application.Features.ProductFeatures.Queries.GetAllProducts;
 using MoneyManagement.Application.Features.ProductFeatures.Queries.GetProductById;
+using MoneyManagement.Application.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +30,9 @@ namespace BackEndAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] PaginationFilter paginationFilter)
         {
-            return Ok(await Mediator.Send(new GetAllProductsQuery()));
+            return Ok(await Mediator.Send(new GetAllProductsQuery(paginationFilter)));
         }
 
         /// <summary>

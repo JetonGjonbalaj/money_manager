@@ -11,7 +11,7 @@
             <param name="command"></param>
             <returns></returns>
         </member>
-        <member name="M:BackEndAPI.Controllers.ProductController.GetAll">
+        <member name="M:BackEndAPI.Controllers.ProductController.GetAll(MoneyManagement.Application.Pagination.PaginationFilter)">
             <summary>
             Gets all Products.
             </summary>

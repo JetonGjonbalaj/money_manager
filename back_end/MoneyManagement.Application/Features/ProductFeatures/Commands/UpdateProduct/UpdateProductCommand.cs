@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using MoneyManagement.Application.Interfaces;
+using MoneyManagement.Application.Wrappers;
 using MoneyManagement.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace MoneyManagement.Application.Features.ProductFeatures.Commands.UpdateProduct
 {
-    public class UpdateProductCommand : IRequest<int>
+    public class UpdateProductCommand : IRequest<Response<int>>
     {
         public int Id { get; set; }
         public string Barcode { get; set; }
@@ -20,7 +21,7 @@ namespace MoneyManagement.Application.Features.ProductFeatures.Commands.UpdatePr
         public decimal Rate { get; set; }
     }
 
-    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, int>
+    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, Response<int>>
     {
         private readonly IApplicationDbContext _context;
 
@@ -29,11 +30,11 @@ namespace MoneyManagement.Application.Features.ProductFeatures.Commands.UpdatePr
             _context = context;
         }
 
-        public async Task<int> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
+        public async Task<Response<int>> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
             var product = await _context.Products.Where(p => p.Id == request.Id).FirstOrDefaultAsync();
 
-            if (product == null) return default;
+            if (product == null) return new Response<int>("Product not found!");
 
             product.Barcode = request.Barcode;
             product.Name = request.Name;
@@ -42,7 +43,7 @@ namespace MoneyManagement.Application.Features.ProductFeatures.Commands.UpdatePr
 
             await _context.SaveChangesAsync();
 
-            return product.Id;
+            return new Response<int>(product.Id);
         }
     }
 }
