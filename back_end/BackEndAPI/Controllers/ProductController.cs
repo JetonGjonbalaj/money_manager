@@ -62,7 +62,7 @@ namespace BackEndAPI.Controllers
         /// <param name="id"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        [HttpPut("[action]")]
+        [HttpPut("[action]/{id}")]
         public async Task<IActionResult> Update(int id, UpdateProductCommand command)
         {
             if (id != command.Id)

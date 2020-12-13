@@ -11,6 +11,10 @@ namespace MoneyManagement.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
+            builder.Property(p => p.Barcode)
+                .HasMaxLength(20)
+                .IsRequired();
+
             builder.Property(p => p.Name)
                 .HasMaxLength(200)
                 .IsRequired();
