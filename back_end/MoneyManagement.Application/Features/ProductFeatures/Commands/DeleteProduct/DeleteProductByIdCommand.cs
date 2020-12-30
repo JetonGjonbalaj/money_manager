@@ -35,7 +35,7 @@ namespace MoneyManagement.Application.Features.ProductFeatures.Commands.DeletePr
 
             await _context.SaveChangesAsync();
 
-            return new Response<int>(product.Id);
+            return new Response<int>(product.Id, "Product deleted successfully!");
         }
     }
 }

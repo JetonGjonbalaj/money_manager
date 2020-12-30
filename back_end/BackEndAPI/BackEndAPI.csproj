@@ -27,5 +27,9 @@
     <ProjectReference Include="..\MoneyManagement.Infrastructure\MoneyManagement.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Middlewares\" />
+  </ItemGroup>
+
 
 </Project>

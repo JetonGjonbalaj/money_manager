@@ -11,7 +11,10 @@ namespace MoneyManagement.Application.Wrappers
         public string Message { get; set; }
         public IEnumerable<string> Errors { get; set; }
 
-        public Response() {}
+        public Response()
+        {
+            Succeeded = false;
+        }
 
         public Response(string message)
         {

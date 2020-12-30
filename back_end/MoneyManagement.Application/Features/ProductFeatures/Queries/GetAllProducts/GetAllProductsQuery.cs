@@ -49,9 +49,8 @@ namespace MoneyManagement.Application.Features.ProductFeatures.Queries.GetAllPro
             if (products.Count == 0) return new PagedResponse<IEnumerable<Product>>("There is no data!");
             
             var totalProducts = await _context.Products.CountAsync();
-            var totalPages = Convert.ToInt32(Math.Ceiling(1.0 * totalProducts / request.PageSize));
 
-            return new PagedResponse<IEnumerable<Product>>(products.AsReadOnly(), request.PageNumber, request.PageSize, totalPages, totalProducts);
+            return new PagedResponse<IEnumerable<Product>>(products.AsReadOnly(), request.PageNumber, request.PageSize, totalProducts);
         }
     }
 }

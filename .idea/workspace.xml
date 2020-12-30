@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2ccdfda2-246d-4d51-8c10-4ef3fc8f8a04" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/back_end/BackEndAPI/BackEndAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/back_end/BackEndAPI/BackEndAPI.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_end/MoneyManagement.Application/Features/ProductFeatures/Commands/CreateProduct/CreateProductCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back_end/MoneyManagement.Application/Features/ProductFeatures/Commands/CreateProduct/CreateProductCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_end/MoneyManagement.Application/Features/ProductFeatures/Commands/DeleteProduct/DeleteProductByIdCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back_end/MoneyManagement.Application/Features/ProductFeatures/Commands/DeleteProduct/DeleteProductByIdCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_end/MoneyManagement.Application/Features/ProductFeatures/Commands/UpdateProduct/UpdateProductCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back_end/MoneyManagement.Application/Features/ProductFeatures/Commands/UpdateProduct/UpdateProductCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_end/MoneyManagement.Application/Features/ProductFeatures/Queries/GetAllProducts/GetAllProductsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back_end/MoneyManagement.Application/Features/ProductFeatures/Queries/GetAllProducts/GetAllProductsQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_end/MoneyManagement.Application/Wrappers/PagedResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back_end/MoneyManagement.Application/Wrappers/PagedResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_end/MoneyManagement.Application/Wrappers/Response.cs" beforeDir="false" afterPath="$PROJECT_DIR$/back_end/MoneyManagement.Application/Wrappers/Response.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/lib/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/lib/constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/lib/screens/homepage.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1mJ55exa65u0bnsucwYyFqb9XTu" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2ccdfda2-246d-4d51-8c10-4ef3fc8f8a04" name="Default Changelist" comment="" />
+      <created>1609198672293</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609198672293</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // Constants
-import '../constants.dart';
+import '../../utils/constants.dart';
 
 // Models
-import '../models/upcoming_expense.dart';
+import '../../models/upcoming_expense.dart';
 
 // Components
-import '../components/upcoming_expense/upcoming_expense_list.dart';
-import '../components/layout/layout.dart';
-import '../components/box_shadow/custom_box_shadow.dart';
+import '../../components/upcoming_expense/upcoming_expense_list.dart';
+import '../../components/layout/layout.dart';
+import '../../components/box_shadow/custom_box_shadow.dart';
 
 class HomePage extends StatelessWidget{
   final List<String> expenseName = ["Auto", "Beauty", "Clothes", "Entertainment", "Groceries", "Home", "Medical"];

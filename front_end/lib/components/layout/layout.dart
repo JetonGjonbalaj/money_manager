@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Constants
-import '../../constants.dart';
+import '../../utils/constants.dart';
 
 class Layout extends StatelessWidget {
   final Widget child;

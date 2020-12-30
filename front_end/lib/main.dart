@@ -1,37 +1,46 @@
 import 'package:flutter/material.dart';
-
-// Constants
-import './constants.dart';
-
-// Screens
-import './screens/homepage.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:money_manager/enums/theme_style.dart';
+import 'package:money_manager/redux/app_reducer.dart';
+import 'package:money_manager/redux/app_state.dart';
+import 'package:money_manager/redux/theme/actions/fetch_theme_action.dart';
+import 'package:money_manager/redux/theme/middleware/theme_middleware.dart';
+import 'package:money_manager/utils/themes.dart';
+import 'package:redux/redux.dart';
+import 'package:redux_thunk/redux_thunk.dart';
+import 'screens/login/login_screen.dart';
+import 'screens/signup/signup_screen.dart';
+import 'screens/forgot_password/forgot_password_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  final store = Store<AppState>(appReducer, initialState: AppState.initial(), middleware: [themeMiddleware]);
+  store.dispatch(FetchThemeAction());
+  runApp(
+    StoreProvider(
+      store: store,
+      child: MyApp()
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.light,
-        backgroundColor: Colors.white,
-        primaryColor: Colors.black,
-        textTheme: TextTheme(
-          headline1: TextStyle(color: Colors.black),
-          headline2: TextStyle(color: Colors.black),
-          headline3: TextStyle(color: Colors.black),
-          headline4: TextStyle(color: Colors.black),
-          headline5: TextStyle(color: Colors.black),
-          headline6: TextStyle(color: Colors.black),
-          bodyText1: TextStyle(fontWeight: FontWeight.normal, fontSize: 20.0),
-          bodyText2: TextStyle(fontWeight: FontWeight.w100, fontSize: 16.0)
-        ),
-      ),
-      home: HomePage()
+    return StoreConnector<AppState, ThemeStyle>(
+      converter: (store) => store.state.theme.themeStyle,
+      builder: (context, theme) { 
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: theme == ThemeStyle.light ? lightTheme : darkTheme,
+          home: LoginScreen(),
+          routes: <String, WidgetBuilder> {
+            LoginScreen.routeName: (BuildContext context) => LoginScreen(),
+            SignupScreen.routeName: (BuildContext context) => SignupScreen(),
+            ForgotPasswordScreen.routeName: (BuildContext context) => ForgotPasswordScreen()
+          },
+        );
+      },
     );
   }
 }

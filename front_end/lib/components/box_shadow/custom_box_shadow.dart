@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Constants
-import '../../constants.dart';
+import '../../utils/constants.dart';
 
 class CustomBoxShadow extends StatelessWidget {
   final Widget child;

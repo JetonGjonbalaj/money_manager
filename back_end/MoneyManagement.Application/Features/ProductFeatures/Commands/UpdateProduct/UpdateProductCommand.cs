@@ -43,7 +43,7 @@ namespace MoneyManagement.Application.Features.ProductFeatures.Commands.UpdatePr
 
             await _context.SaveChangesAsync();
 
-            return new Response<int>(product.Id);
+            return new Response<int>(product.Id, "Product updated successfully!");
         }
     }
 }

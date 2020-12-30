@@ -39,7 +39,7 @@ namespace MoneyManagement.Application.Features.ProductFeatures.Commands.CreatePr
 
             await _context.SaveChangesAsync();
 
-            return new Response<int>(product.Id);
+            return new Response<int>(product.Id, "Course created successfully!");
         }
     }
 }
