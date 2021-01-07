@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MoneyManagement.Application.Features.ProductFeatures.Commands.CreateProduct
 {
-    public class CreateProductCommand : IRequest<Response<int>>
+    public class CreateProductCommand : IRequest<DataResponse<string>>
     {
         public string Barcode { get; set; }
         public string Name { get; set; }
@@ -18,16 +18,16 @@ namespace MoneyManagement.Application.Features.ProductFeatures.Commands.CreatePr
         public decimal Rate { get; set; }
     }
 
-    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Response<int>>
+    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, DataResponse<string>>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IRepositoryAsync<Product> _repository;
 
-        public CreateProductCommandHandler(IApplicationDbContext context)
+        public CreateProductCommandHandler(IRepositoryAsync<Product> repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
-        public async Task<Response<int>> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+        public async Task<DataResponse<string>> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
             var product = new Product();
             product.Barcode = request.Barcode;
@@ -35,11 +35,9 @@ namespace MoneyManagement.Application.Features.ProductFeatures.Commands.CreatePr
             product.Description = request.Description;
             product.Rate = request.Rate;
 
-            _context.Products.Add(product);
+            await _repository.AddAsync(product);
 
-            await _context.SaveChangesAsync();
-
-            return new Response<int>(product.Id, "Course created successfully!");
+            return new DataResponse<string>(product.Id, "Course created successfully!");
         }
     }
 }

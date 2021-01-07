@@ -4,11 +4,23 @@ using System.Text;
 
 namespace MoneyManagement.Application.Wrappers
 {
-    public class PagedResponse<T> : Response<T>
+    public class PagedResponse<T> : DataResponse<T>
     {
+        private int _pageSize;
+
         public int PageNumber { get; set; }
-        public int PageSize { get; set; }
         public int TotalRecords { get; set; }
+        public int PageSize
+        {
+            get
+            {
+                return _pageSize > 0 ? _pageSize : 1;
+            }
+            set
+            {
+                _pageSize = value;
+            }
+        }
         public int TotalPages
         {
             get
@@ -17,8 +29,12 @@ namespace MoneyManagement.Application.Wrappers
             }
         }
 
-        public PagedResponse(string message) : base(message)
-        {}
+        public PagedResponse(string message, int pageNumber, int pageSize, int totalRecords) : base(message)
+        {
+            PageNumber = pageNumber;
+            PageSize = pageSize;
+            TotalRecords = totalRecords;
+        }
 
         public PagedResponse(T data, int pageNumber, int pageSize, int totalRecords)
         {

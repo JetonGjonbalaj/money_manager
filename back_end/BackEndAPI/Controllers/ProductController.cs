@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using MoneyManagement.Application.Exceptions;
 using MoneyManagement.Application.Features.ProductFeatures.Commands.CreateProduct;
 using MoneyManagement.Application.Features.ProductFeatures.Commands.DeleteProduct;
 using MoneyManagement.Application.Features.ProductFeatures.Commands.UpdateProduct;
@@ -8,10 +10,12 @@ using MoneyManagement.Application.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace BackEndAPI.Controllers
 {
+    [Authorize]
     public class ProductController : BaseApiController
     {
         /// <summary>
@@ -41,7 +45,7 @@ namespace BackEndAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(string id)
         {
             return Ok(await Mediator.Send(new GetProductByIdQuery { Id = id }));
         }
@@ -52,7 +56,7 @@ namespace BackEndAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("[action]/{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
             return Ok(await Mediator.Send(new DeleteProductByIdCommand { Id = id }));
         }
@@ -64,11 +68,11 @@ namespace BackEndAPI.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("[action]/{id}")]
-        public async Task<IActionResult> Update(int id, UpdateProductCommand command)
+        public async Task<IActionResult> Update(string id, UpdateProductCommand command)
         {
             if (id != command.Id)
             {
-                return BadRequest();
+                throw new ApiException("Ids don't match!");
             }
             return Ok(await Mediator.Send(command));
         }

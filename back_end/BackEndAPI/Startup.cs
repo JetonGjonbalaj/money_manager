@@ -1,10 +1,12 @@
 using BackEndAPI.Extensions;
+using BackEndAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MoneyManagement.Application;
+using MoneyManagement.Application.Interfaces;
 using MoneyManagement.Infrastructure;
 
 namespace BackEndAPI
@@ -23,8 +25,9 @@ namespace BackEndAPI
         {
             services.AddApplication();
             services.AddControllers();
-            services.AddSwaggerExtension();
             services.AddPersistence(Configuration);
+
+            services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,14 +42,15 @@ namespace BackEndAPI
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseErrorHandlingMiddleware();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-
-            app.UseSwaggerExtension();
         }
     }
 }

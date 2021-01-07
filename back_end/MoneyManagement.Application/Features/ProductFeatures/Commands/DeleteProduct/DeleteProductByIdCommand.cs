@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using MoneyManagement.Application.Exceptions;
 using MoneyManagement.Application.Interfaces;
 using MoneyManagement.Application.Wrappers;
+using MoneyManagement.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,31 +13,29 @@ using System.Threading.Tasks;
 
 namespace MoneyManagement.Application.Features.ProductFeatures.Commands.DeleteProduct
 {
-    public class DeleteProductByIdCommand : IRequest<Response<int>>
+    public class DeleteProductByIdCommand : IRequest<DataResponse<string>>
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
     }
 
-    public class DeleteProductByIdCommandHandler : IRequestHandler<DeleteProductByIdCommand, Response<int>>
+    public class DeleteProductByIdCommandHandler : IRequestHandler<DeleteProductByIdCommand, DataResponse<string>>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IRepositoryAsync<Product> _repository;
 
-        public DeleteProductByIdCommandHandler(IApplicationDbContext context)
+        public DeleteProductByIdCommandHandler(IRepositoryAsync<Product> repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
-        public async Task<Response<int>> Handle(DeleteProductByIdCommand request, CancellationToken cancellationToken)
+        public async Task<DataResponse<string>> Handle(DeleteProductByIdCommand request, CancellationToken cancellationToken)
         {
-            var product = await _context.Products.Where(p => p.Id == request.Id).FirstOrDefaultAsync();
+            var product = await _repository.GetByIdAsync(request.Id);
 
-            if (product == null) return new Response<int>("Product not found!");
+            if (product == null) throw new ApiException("Product not found!");
 
-            _context.Products.Remove(product);
+            await _repository.Delete(product);
 
-            await _context.SaveChangesAsync();
-
-            return new Response<int>(product.Id, "Product deleted successfully!");
+            return new DataResponse<string>(product.Id, "Product deleted successfully!");
         }
     }
 }

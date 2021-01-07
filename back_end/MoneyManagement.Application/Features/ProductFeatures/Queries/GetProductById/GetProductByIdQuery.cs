@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using MoneyManagement.Application.Exceptions;
 using MoneyManagement.Application.Interfaces;
 using MoneyManagement.Application.Wrappers;
 using MoneyManagement.Domain.Entities;
@@ -12,27 +13,27 @@ using System.Threading.Tasks;
 
 namespace MoneyManagement.Application.Features.ProductFeatures.Queries.GetProductById
 {
-    public class GetProductByIdQuery : IRequest<Response<Product>>
+    public class GetProductByIdQuery : IRequest<DataResponse<Product>>
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
     }
 
-    public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, Response<Product>>
+    public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, DataResponse<Product>>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IRepositoryAsync<Product> _repository;
 
-        public GetProductByIdQueryHandler(IApplicationDbContext context)
+        public GetProductByIdQueryHandler(IRepositoryAsync<Product> repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
-        public async Task<Response<Product>> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
+        public async Task<DataResponse<Product>> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
-            var product = await _context.Products.Where(p => p.Id == request.Id).FirstOrDefaultAsync();
+            var product = await _repository.GetByIdAsync(request.Id);
 
-            if (product == null) return new Response<Product>("Product not found!");
+            if (product == null) throw new ApiException("Product not found!");
 
-            return new Response<Product>(product);
+            return new DataResponse<Product>(product);
         }
     }
 }

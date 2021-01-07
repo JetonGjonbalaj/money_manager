@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MoneyManagement.Domains.Common
+namespace MoneyManagement.Domain.Common
 {
     public abstract class BaseEntity
     {
-        public virtual int Id { get;set; }
+        public virtual string Id { get; set; }
     }
 }

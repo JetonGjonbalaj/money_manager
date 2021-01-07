@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using MoneyManagement.Application.Exceptions;
 using MoneyManagement.Application.Interfaces;
 using MoneyManagement.Application.Wrappers;
 using MoneyManagement.Domain.Entities;
@@ -12,38 +13,38 @@ using System.Threading.Tasks;
 
 namespace MoneyManagement.Application.Features.ProductFeatures.Commands.UpdateProduct
 {
-    public class UpdateProductCommand : IRequest<Response<int>>
+    public class UpdateProductCommand : IRequest<DataResponse<string>>
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Barcode { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Rate { get; set; }
     }
 
-    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, Response<int>>
+    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, DataResponse<string>>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IRepositoryAsync<Product> _repository;
 
-        public UpdateProductCommandHandler(IApplicationDbContext context)
+        public UpdateProductCommandHandler(IRepositoryAsync<Product> repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
-        public async Task<Response<int>> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
+        public async Task<DataResponse<string>> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
-            var product = await _context.Products.Where(p => p.Id == request.Id).FirstOrDefaultAsync();
+            var product = await _repository.GetByIdAsync(request.Id);
 
-            if (product == null) return new Response<int>("Product not found!");
+            if (product == null) throw new ApiException("Product not found!");
 
             product.Barcode = request.Barcode;
             product.Name = request.Name;
             product.Description = request.Description;
             product.Rate = request.Rate;
 
-            await _context.SaveChangesAsync();
+            await _repository.Update(product);
 
-            return new Response<int>(product.Id, "Product updated successfully!");
+            return new DataResponse<string>(product.Id, "Product updated successfully!");
         }
     }
 }
