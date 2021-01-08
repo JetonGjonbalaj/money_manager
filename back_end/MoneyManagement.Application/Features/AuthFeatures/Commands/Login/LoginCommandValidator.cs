@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using MoneyManagement.Application.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +13,13 @@ namespace MoneyManagement.Application.Features.AuthFeatures.Commands.Login
         public LoginCommandValidator()
         {
             RuleFor(l => l.Email)
-                .NotEmpty().WithMessage("{PropertyName} is required!")
-                .Length(5, 256).WithMessage("{PropertyName} must be at least {MinLength} characters and not exceed {MaxLength} characters! You entered {TotalLength} characters.")
-                .EmailAddress().WithMessage("{PropertyName} must be a valid email!");
+                .NotEmpty().WithMessage(ValidationConstants.RequiredText)
+                .Length(5, 256).WithMessage(ValidationConstants.LengthText)
+                .EmailAddress().WithMessage(ValidationConstants.EmailText);
 
             RuleFor(l => l.Password)
-                .NotEmpty().WithMessage("{PropertyName} is required!")
-                .MinimumLength(6).WithMessage("{PropertyName} must be at least {MinLength} characters! You entered {TotalLength} characters.");
+                .NotEmpty().WithMessage(ValidationConstants.RequiredText)
+                .MinimumLength(6).WithMessage(ValidationConstants.MinumumLengthText);
         }
     }
 }
