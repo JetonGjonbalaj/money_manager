@@ -36,7 +36,7 @@ namespace MoneyManagement.Application.Features.RecordFeatures.Commands.DeleteExp
 
             await _repository.DeleteExpenseAsync(userId, expense);
 
-            return new Response("Expense deleted successfully!");
+            return new Response("Expense deleted successfully!", true);
         }
     }
 }

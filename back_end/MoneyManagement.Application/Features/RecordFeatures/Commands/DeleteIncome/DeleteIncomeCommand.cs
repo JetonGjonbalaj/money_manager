@@ -36,7 +36,7 @@ namespace MoneyManagement.Application.Features.RecordFeatures.Commands.DeleteInc
 
             await _repository.DeleteIncomeAsync(userId, income);
 
-            return new Response("Income deleted successfully!");
+            return new Response("Income deleted successfully!", true);
         }
     }
 }

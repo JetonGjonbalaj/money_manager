@@ -50,8 +50,9 @@ namespace MoneyManagement.Infrastructure
             services.Configure<JWTSettings>(configuration.GetSection("JWTSettings"));
 
             services.AddTransient(typeof(IRepositoryAsync<>), typeof(RepositoryAsync<>));
-            services.AddTransient<IRecordRepositoryAsync, RecordRepositoryAsync>();
+            services.AddTransient<IBudgetRepositoryAsync, BudgetRepositoryAsync>();
             services.AddTransient<ICategoryRepositoryAsync, CategoryRepositoryAsync>();
+            services.AddTransient<IRecordRepositoryAsync, RecordRepositoryAsync>();
             services.AddTransient<IUserService, UserService>();
         }
     }

@@ -34,7 +34,7 @@ namespace MoneyManagement.Application.Features.CategoryFeatures.Commands.DeleteC
 
             await _repository.DeleteAsync(category);
 
-            return new Response("Category deleted successfully!");
+            return new Response("Category deleted successfully!", true);
         }
     }
 }

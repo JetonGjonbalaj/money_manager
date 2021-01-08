@@ -26,7 +26,7 @@ namespace BackEndAPI
             services.AddApplication();
             services.AddControllers();
             services.AddPersistence(Configuration);
-
+            services.AddSwaggerExtension();
             services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
         }
 
@@ -51,6 +51,8 @@ namespace BackEndAPI
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwaggerExtension();
         }
     }
 }

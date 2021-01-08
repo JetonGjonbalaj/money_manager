@@ -4,6 +4,7 @@ using MoneyManagement.Application.Interfaces;
 using MoneyManagement.Domain.Entities;
 using MoneyManagement.Infrastructure.Configurations;
 using MoneyManagement.Infrastructure.Models;
+using MoneyManagement.Infrastructure.Seed;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -30,6 +31,7 @@ namespace MoneyManagement.Infrastructure.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            builder.Seed();
 
             base.OnModelCreating(builder);
         }

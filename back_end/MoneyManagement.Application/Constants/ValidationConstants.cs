@@ -34,6 +34,8 @@ namespace MoneyManagement.Application.Constants
 
         public static string UniqueText = "{PropertyName} already exists!";
 
+        public static string UniqueUserText = "User already has a budget!";
+
         public static string ShouldExistText = "{PropertyName} does not exist!";
     }
 }
