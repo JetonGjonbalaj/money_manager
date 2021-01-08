@@ -8,18 +8,15 @@ namespace MoneyManagement.Application.Wrappers
     {
         public T Data { get; set; }
 
-        public DataResponse()
+        public DataResponse() : base()
         {
-            Succeeded = false;
         }
 
-        public DataResponse(string message)
+        public DataResponse(string message) : base(message)
         {
-            Succeeded = false;
-            Message = message;
         }
 
-        public DataResponse(T data, string message = null)
+        public DataResponse(T data, string message)
         {
             Data = data;
             Succeeded = true;

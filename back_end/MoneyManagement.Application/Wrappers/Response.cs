@@ -11,5 +11,16 @@ namespace MoneyManagement.Application.Wrappers
         public bool Succeeded { get; set; }
         public string Message { get; set; }
         public IEnumerable<string> Errors { get; set; }
+
+        public Response()
+        {
+            Succeeded = false;
+        }
+
+        public Response(string message, bool succeeded = false)
+        {
+            Succeeded = succeeded;
+            Message = message;
+        }
     }
 }
