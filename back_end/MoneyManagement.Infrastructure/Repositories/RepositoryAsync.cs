@@ -26,7 +26,7 @@ namespace MoneyManagement.Infrastructure.Repositories
             return entity;
         }
 
-        public async Task Delete(T entity)
+        public async Task DeleteAsync(T entity)
         {
             _context.Set<T>().Remove(entity);
             await _context.SaveChangesAsync();
@@ -56,7 +56,7 @@ namespace MoneyManagement.Infrastructure.Repositories
                 .ToListAsync();
         }
 
-        public async Task Update(T entity)
+        public async Task UpdateAsync(T entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
