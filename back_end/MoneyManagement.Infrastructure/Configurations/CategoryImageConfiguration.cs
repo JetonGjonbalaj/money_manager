@@ -13,13 +13,18 @@ namespace MoneyManagement.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<CategoryImage> builder)
         {
+            builder.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
+
             builder.HasOne(ci => ci.Image)
                 .WithOne()
-                .HasForeignKey<CategoryImage>(ci => ci.ImageId);
+                .HasForeignKey<CategoryImage>(ci => ci.ImageId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(ci => ci.Category)
                 .WithOne(c => c.CategoryImage)
-                .HasForeignKey<CategoryImage>(ci => ci.CategoryId);
+                .HasForeignKey<CategoryImage>(ci => ci.CategoryId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

@@ -13,13 +13,21 @@ namespace MoneyManagement.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<ExpenseCategory> builder)
         {
+            builder.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
+
+            builder.HasIndex(e => e.CategoryId)
+                .IsUnique(false);
+
             builder.HasOne(ec => ec.Expense)
                 .WithOne(e => e.ExpenseCategory)
-                .HasForeignKey<ExpenseCategory>(ec => ec.ExpenseId);
+                .HasForeignKey<ExpenseCategory>(ec => ec.ExpenseId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(ec => ec.Category)
                 .WithOne(c => c.ExpenseCategory)
-                .HasForeignKey<ExpenseCategory>(ec => ec.CategoryId);
+                .HasForeignKey<ExpenseCategory>(ec => ec.CategoryId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

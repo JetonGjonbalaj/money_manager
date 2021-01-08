@@ -13,12 +13,8 @@ namespace MoneyManagement.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<Income> builder)
         {
-            builder.HasKey(b => b.Id);
-
-            builder.Property(i => i.Id)
-                .HasMaxLength(450)
-                .ValueGeneratedOnAdd()
-                .IsRequired();
+            builder.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
 
             builder.Property(i => i.Amount)
                 .HasPrecision(18, 2)

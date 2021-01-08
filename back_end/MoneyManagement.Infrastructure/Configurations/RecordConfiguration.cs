@@ -14,24 +14,23 @@ namespace MoneyManagement.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<Record> builder)
         {
-            builder.HasKey(b => b.Id);
+            builder.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
 
             builder.HasOne<UserIdentityModel>()
                 .WithOne(ui => ui.Record)
-                .HasForeignKey<Record>(r => r.UserId);
+                .HasForeignKey<Record>(r => r.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(r => r.Expenses)
                 .WithOne(e => e.Record)
-                .HasForeignKey(e => e.RecordId);
+                .HasForeignKey(e => e.RecordId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(r => r.Incomes)
                 .WithOne(e => e.Record)
-                .HasForeignKey(e => e.RecordId);
-
-            builder.Property(r => r.Id)
-                .HasMaxLength(450)
-                .ValueGeneratedOnAdd()
-                .IsRequired();
+                .HasForeignKey(e => e.RecordId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Property(r => r.UserId)
                 .IsRequired();

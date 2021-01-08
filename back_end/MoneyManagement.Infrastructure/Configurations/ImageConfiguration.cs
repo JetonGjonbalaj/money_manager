@@ -13,6 +13,9 @@ namespace MoneyManagement.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<Image> builder)
         {
+            builder.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
+
             builder.Property(i => i.ImageName)
                 .HasMaxLength(256)
                 .IsRequired();

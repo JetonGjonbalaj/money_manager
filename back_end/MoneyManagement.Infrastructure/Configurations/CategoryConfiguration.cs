@@ -13,6 +13,9 @@ namespace MoneyManagement.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
+            builder.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
+
             builder.Property(c => c.Name)
                 .HasMaxLength(256)
                 .IsRequired();

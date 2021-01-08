@@ -13,10 +13,14 @@ namespace MoneyManagement.Infrastructure.Configurations
     public class BudgetConfiguration : IEntityTypeConfiguration<Budget>
     {
         public void Configure(EntityTypeBuilder<Budget> builder)
-        {   
+        {
+            builder.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
+
             builder.HasOne<UserIdentityModel>()
                 .WithOne(ui => ui.Budget)
-                .HasForeignKey<Budget>(b => b.UserId);
+                .HasForeignKey<Budget>(b => b.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Property(b => b.UserId)
                 .IsRequired();

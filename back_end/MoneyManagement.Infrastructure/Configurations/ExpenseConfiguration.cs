@@ -16,9 +16,7 @@ namespace MoneyManagement.Infrastructure.Configurations
             builder.HasKey(b => b.Id);
 
             builder.Property(e => e.Id)
-                .HasMaxLength(450)
-                .ValueGeneratedOnAdd()
-                .IsRequired();
+                .ValueGeneratedOnAdd();
 
             builder.Property(e => e.Amount)
                 .HasPrecision(18, 2)
@@ -26,6 +24,9 @@ namespace MoneyManagement.Infrastructure.Configurations
 
             builder.Property(e => e.Description)
                 .HasMaxLength(256)
+                .IsRequired(false);
+
+            builder.Property(e => e.ExpendedAt)
                 .IsRequired();
 
             builder.Property(e => e.CreatedAt)
