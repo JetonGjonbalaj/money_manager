@@ -26,10 +26,8 @@ namespace MoneyManagement.Infrastructure.Repositories
 
         public async Task<Expense> GetExpenseAsync(string userId, string expenseId)
         {
-            var record = await GetUserRecordAsync(userId);
-            var expense = record.Expenses.SingleOrDefault(e => e.Id == expenseId);
-
-            return expense;
+            //var record = await GetUserRecordAsync(userId);
+            return await _records.Where(r => r.UserId == userId).SelectMany(r => r.Expenses).SingleOrDefaultAsync(e => e.Id == expenseId);
         }
 
         public async Task AddExpenseAsync(string userId, Expense expense)
@@ -62,6 +60,44 @@ namespace MoneyManagement.Infrastructure.Repositories
             var record = await GetUserRecordAsync(userId);
 
             record.Expenses.Remove(expense);
+            await UpdateAsync(record);
+        }
+
+        public async Task<Income> GetIncomeAsync(string userId, string incomeId)
+        {
+            return await _records.Where(r => r.UserId == userId).SelectMany(r => r.Incomes).SingleOrDefaultAsync(e => e.Id == incomeId);
+        }
+
+        public async Task AddIncomeAsync(string userId, Income income)
+        {
+            var record = await GetUserRecordAsync(userId);
+
+            if (record == null)
+            {
+                record = new Record();
+                record.UserId = userId;
+                await AddAsync(record);
+            }
+
+            record.Incomes.Add(income);
+            await UpdateAsync(record);
+        }
+
+        public async Task UpdateIncomeAsync(string userId, Income income)
+        {
+            var record = await GetUserRecordAsync(userId);
+            var oldIncome = record.Incomes.SingleOrDefault(e => e.Id == income.Id);
+
+            record.Incomes.Remove(oldIncome);
+            record.Incomes.Add(income);
+            await UpdateAsync(record);
+        }
+
+        public async Task DeleteIncomeAsync(string userId, Income income)
+        {
+            var record = await GetUserRecordAsync(userId);
+
+            record.Incomes.Remove(income);
             await UpdateAsync(record);
         }
     }

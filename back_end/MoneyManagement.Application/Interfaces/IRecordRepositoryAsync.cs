@@ -14,5 +14,9 @@ namespace MoneyManagement.Application.Interfaces
         Task AddExpenseAsync(string userId, Expense expense);
         Task UpdateExpenseAsync(string userId, Expense expense);
         Task DeleteExpenseAsync(string userId, Expense expense);
+        Task<Income> GetIncomeAsync(string userId, string incomeId);
+        Task AddIncomeAsync(string userId, Income income);
+        Task UpdateIncomeAsync(string userId, Income income);
+        Task DeleteIncomeAsync(string userId, Income income);
     }
 }
