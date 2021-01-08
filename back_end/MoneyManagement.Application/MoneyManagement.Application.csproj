@@ -15,4 +15,9 @@
     <ProjectReference Include="..\MoneyManagement.Domain\MoneyManagement.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\CategoryFeatures\Queries\" />
+    <Folder Include="Features\RecordFeatures\Queries\" />
+  </ItemGroup>
+
 </Project>
