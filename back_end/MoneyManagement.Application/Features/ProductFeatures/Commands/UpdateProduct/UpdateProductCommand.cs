@@ -42,7 +42,7 @@ namespace MoneyManagement.Application.Features.ProductFeatures.Commands.UpdatePr
             product.Description = request.Description;
             product.Rate = request.Rate;
 
-            await _repository.Update(product);
+            await _repository.UpdateAsync(product);
 
             return new DataResponse<string>(product.Id, "Product updated successfully!");
         }

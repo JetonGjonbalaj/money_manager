@@ -33,7 +33,7 @@ namespace MoneyManagement.Application.Features.ProductFeatures.Queries.GetProduc
 
             if (product == null) throw new ApiException("Product not found!");
 
-            return new DataResponse<Product>(product);
+            return new DataResponse<Product>(product, "Product added successfully!");
         }
     }
 }

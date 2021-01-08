@@ -33,7 +33,7 @@ namespace MoneyManagement.Application.Features.ProductFeatures.Commands.DeletePr
 
             if (product == null) throw new ApiException("Product not found!");
 
-            await _repository.Delete(product);
+            await _repository.DeleteAsync(product);
 
             return new DataResponse<string>(product.Id, "Product deleted successfully!");
         }
