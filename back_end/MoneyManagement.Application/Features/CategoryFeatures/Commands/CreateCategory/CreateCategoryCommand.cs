@@ -19,9 +19,9 @@ namespace MoneyManagement.Application.Features.CategoryFeatures.Commands.CreateC
 
     public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, DataResponse<string>>
     {
-        private readonly IRepositoryAsync<Category> _repository;
+        private readonly ICategoryRepositoryAsync _repository;
 
-        public CreateCategoryCommandHandler(IRepositoryAsync<Category> repository)
+        public CreateCategoryCommandHandler(ICategoryRepositoryAsync repository)
         {
             _repository = repository;
         }

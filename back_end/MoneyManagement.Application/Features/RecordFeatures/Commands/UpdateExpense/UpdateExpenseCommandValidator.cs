@@ -17,6 +17,9 @@ namespace MoneyManagement.Application.Features.RecordFeatures.Commands.UpdateExp
         {
             _repository = repository;
 
+            RuleFor(e => e.Id)
+                .NotEmpty().WithMessage(ValidationConstants.RequiredText);
+
             RuleFor(e => e.Amount)
                 .NotEmpty().WithMessage(ValidationConstants.RequiredText)
                 .ScalePrecision(2, 18).WithMessage(ValidationConstants.ScalePrecisionText);

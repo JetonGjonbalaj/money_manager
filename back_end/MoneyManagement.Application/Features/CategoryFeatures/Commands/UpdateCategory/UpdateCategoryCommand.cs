@@ -20,9 +20,9 @@ namespace MoneyManagement.Application.Features.CategoryFeatures.Commands.UpdateC
 
     public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryCommand, DataResponse<string>>
     {
-        private readonly IRepositoryAsync<Category> _repository;
+        private readonly ICategoryRepositoryAsync _repository;
 
-        public UpdateCategoryCommandHandler(IRepositoryAsync<Category> repository)
+        public UpdateCategoryCommandHandler(ICategoryRepositoryAsync repository)
         {
             _repository = repository;
         }
