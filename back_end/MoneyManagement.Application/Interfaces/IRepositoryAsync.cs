@@ -11,8 +11,8 @@ namespace MoneyManagement.Application.Interfaces
         Task<IReadOnlyList<T>> GetAllAsync();
         Task<IReadOnlyList<T>> GetPagedReponseAsync(int pageNumber, int pageSize);
         Task<T> AddAsync(T entity);
-        Task Update(T entity);
-        Task Delete(T entity);
+        Task UpdateAsync(T entity);
+        Task DeleteAsync(T entity);
         Task<int> GetCountAsync();
     }
 }
