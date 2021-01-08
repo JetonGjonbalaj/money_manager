@@ -11,6 +11,7 @@ namespace MoneyManagement.Domain.Entities
     {
         public decimal Amount { get; set; }
         public string Description { get; set; }
+        public DateTime ExpendedAt { get; set; }
 
         public ExpenseCategory ExpenseCategory { get; set; }
 
