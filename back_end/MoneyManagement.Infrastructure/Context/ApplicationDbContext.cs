@@ -26,7 +26,6 @@ namespace MoneyManagement.Infrastructure.Context
         //public DbSet<Expense> Expenses { get; set; }
         //public DbSet<Income> Incomes { get; set; }
         public DbSet<Record> Records { get; set; }
-        public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
