@@ -14,14 +14,24 @@ namespace BackEndAPI.Controllers
     [Authorize]
     public class ExpenseController : BaseApiController
     {
+        /// <summary>
+        /// Creates user's expense
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         [HttpPost("[action]")]
-        public async Task<IActionResult> Create(CreateExpenseCommand command)
+        public async Task<IActionResult> Create([FromBody] CreateExpenseCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
 
+        /// <summary>
+        /// Updates user's expense
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         [HttpPut("[action]/{id}")]
-        public async Task<IActionResult> Update(string id, UpdateExpenseCommand command)
+        public async Task<IActionResult> Update(string id, [FromBody] UpdateExpenseCommand command)
         {
             if (id != command.Id)
             {
@@ -30,6 +40,11 @@ namespace BackEndAPI.Controllers
             return Ok(await Mediator.Send(command));
         }
 
+        /// <summary>
+        /// Deletes user's expense
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("[action]/{id}")]
         public async Task<IActionResult> Delete(string id)
         {

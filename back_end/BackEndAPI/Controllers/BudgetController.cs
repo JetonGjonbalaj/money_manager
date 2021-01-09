@@ -14,12 +14,22 @@ namespace BackEndAPI.Controllers
     [Authorize]
     public class BudgetController : BaseApiController
     {
+        /// <summary>
+        /// Creates user's budget
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         [HttpPost("[action]")]
         public async Task<IActionResult> Create([FromBody] CreateBudgetCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
 
+        /// <summary>
+        /// Updates user's budget
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         [HttpPut("[action]/{id}")]
         public async Task<IActionResult> Update(string id, [FromBody] UpdateBudgetCommand command)
         {
@@ -30,6 +40,11 @@ namespace BackEndAPI.Controllers
             return Ok(await Mediator.Send(command));
         }
 
+        /// <summary>
+        /// Deletes the user's budget
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("[action]/{id}")]
         public async Task<IActionResult> Delete(string id)
         {

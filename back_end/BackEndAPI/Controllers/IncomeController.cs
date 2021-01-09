@@ -14,14 +14,24 @@ namespace BackEndAPI.Controllers
     [Authorize]
     public class IncomeController : BaseApiController
     {
+        /// <summary>
+        /// Creates user's income
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         [HttpPost("[action]")]
         public async Task<IActionResult> Create([FromBody] CreateIncomeCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
 
+        /// <summary>
+        /// Updates user's income
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         [HttpPut("[action]/{id}")]
-        public async Task<IActionResult> Update(string id, UpdateIncomeCommand command)
+        public async Task<IActionResult> Update(string id, [FromBody] UpdateIncomeCommand command)
         {
             if (id != command.Id)
             {
@@ -30,6 +40,11 @@ namespace BackEndAPI.Controllers
             return Ok(await Mediator.Send(command));
         }
 
+        /// <summary>
+        /// Delete user's income
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("[action]/{id}")]
         public async Task<IActionResult> Delete(string id)
         {
