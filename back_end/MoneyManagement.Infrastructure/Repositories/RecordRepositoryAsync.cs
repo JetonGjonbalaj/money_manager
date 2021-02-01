@@ -166,7 +166,7 @@ namespace MoneyManagement.Infrastructure.Repositories
                 .Select(r =>
                     new RecordsByDateDTO()
                     {
-                        Date = r.Key.ToString("MM/dd/yyyy"),
+                        Date = r.Key.ToString("yyyy-MM-dd"),
                         Records = r.OrderBy(ri => ri.DateTime).ToList()
                     })
                 .ToList();
