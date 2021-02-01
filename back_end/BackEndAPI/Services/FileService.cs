@@ -72,7 +72,7 @@ namespace BackEndAPI.Services
 
         private bool IsExtensionValid(string ext)
         {
-            return !string.IsNullOrEmpty(ext) && permittedExtensions.Contains(ext);
+            return !string.IsNullOrEmpty(ext) && permittedExtensions.Contains(ext, StringComparer.OrdinalIgnoreCase);
         }
     }
 }
