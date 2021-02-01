@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MoneyManagement.Application.DTOs;
 using MoneyManagement.Application.Interfaces;
 using MoneyManagement.Domain.Entities;
 using MoneyManagement.Infrastructure.Context;
@@ -22,6 +23,28 @@ namespace MoneyManagement.Infrastructure.Repositories
         public async Task<bool> CategoryIdExistsAsync(string id)
         {
             return await _categories.AnyAsync(c => c.Id == id);
+        }
+
+        public async Task<Category> GetCategoryAsync(string id)
+        {
+            return await _categories.Include(c => c.CategoryImage).ThenInclude(ci => ci.Image).SingleOrDefaultAsync(c => c.Id == id);
+        }
+
+        public async Task<IEnumerable<ExpensesByCategoryDTO>> GetUserExpensesByCategory(string userId)
+        {
+            var userExpensesByCategory = await
+                _categories
+                .Select(c =>
+                    new ExpensesByCategoryDTO()
+                    {
+                        CategoryId = c.Id,
+                        CategoryImg = c.CategoryImage.Image.ImageName,
+                        CategoryName = c.Name,
+                        Amount = c.Expenses.Where(e => e.Record.UserId == userId && e.ExpendedAt <= DateTime.Now).Sum(e => e.Amount)
+                    })
+                .ToListAsync();
+
+            return userExpensesByCategory;
         }
 
         public async Task<bool> HasUniqueNameAsync(string name)

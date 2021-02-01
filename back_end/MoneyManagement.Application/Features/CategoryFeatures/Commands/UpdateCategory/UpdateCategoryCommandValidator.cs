@@ -25,6 +25,13 @@ namespace MoneyManagement.Application.Features.CategoryFeatures.Commands.UpdateC
                 .NotEmpty().WithMessage(ValidationConstants.RequiredText)
                 .MaximumLength(256).WithMessage(ValidationConstants.MaximumLengthText)
                 .MustAsync(BeUniqueName).WithMessage(ValidationConstants.UniqueText);
+
+            RuleFor(c => c.ImageTitle)
+                .NotEmpty().WithMessage(ValidationConstants.RequiredText)
+                .MaximumLength(256).WithMessage(ValidationConstants.MaximumLengthText);
+
+            RuleFor(c => c.ImageFile)
+                .NotEmpty().WithMessage(ValidationConstants.RequiredText);
         }
 
         private async Task<bool> BeUniqueName(string name, CancellationToken cancellationToken)

@@ -32,15 +32,13 @@ namespace MoneyManagement.Application.Features.RecordFeatures.Commands.CreateExp
 
         public async Task<DataResponse<string>> Handle(CreateExpenseCommand request, CancellationToken cancellationToken)
         {
-            var expenseCategory = new ExpenseCategory();
-            expenseCategory.CategoryId = request.CategoryId;
 
             var expense = new Expense();
             expense.Amount = request.Amount;
             expense.Description = request.Description;
             expense.ExpendedAt = request.ExpendedAt;
             expense.CreatedAt = DateTime.Now;
-            expense.ExpenseCategory = expenseCategory;
+            expense.CategoryId = request.CategoryId;
 
             await _repository.AddExpenseAsync(_authenticatedUserService.UserId, expense);
 

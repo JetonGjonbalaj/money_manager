@@ -11,6 +11,7 @@ namespace MoneyManagement.Domain.Entities
     {
         public decimal Amount { get; set; }
         public string Description { get; set; }
+        public DateTime IncomeAt { get; set; }
 
         public string RecordId { get; set; }
         public Record Record { get; set; }

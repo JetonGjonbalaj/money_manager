@@ -22,6 +22,7 @@ namespace MoneyManagement.Application.Features.RecordFeatures.Commands.UpdateExp
 
             RuleFor(e => e.Amount)
                 .NotEmpty().WithMessage(ValidationConstants.RequiredText)
+                .GreaterThan(0).WithMessage(ValidationConstants.GreaterThenText)
                 .ScalePrecision(2, 18).WithMessage(ValidationConstants.ScalePrecisionText);
 
             RuleFor(e => e.Description)

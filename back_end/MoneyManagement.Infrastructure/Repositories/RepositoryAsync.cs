@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿ using Microsoft.EntityFrameworkCore;
 using MoneyManagement.Application.Interfaces;
 using MoneyManagement.Infrastructure.Context;
 using System;
@@ -11,7 +11,7 @@ namespace MoneyManagement.Infrastructure.Repositories
 {
     public class RepositoryAsync<T> : IRepositoryAsync<T> where T : class
     {
-        private readonly ApplicationDbContext _context;
+        private protected readonly ApplicationDbContext _context;
 
         public RepositoryAsync(ApplicationDbContext context)
         {

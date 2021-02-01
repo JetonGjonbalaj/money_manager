@@ -13,7 +13,8 @@ namespace MoneyManagement.Domain.Entities
         public string Description { get; set; }
         public DateTime ExpendedAt { get; set; }
 
-        public ExpenseCategory ExpenseCategory { get; set; }
+        public string CategoryId { get; set; }
+        public Category Category { get; set; }
 
         public string RecordId { get; set; }
         public Record Record { get; set; }

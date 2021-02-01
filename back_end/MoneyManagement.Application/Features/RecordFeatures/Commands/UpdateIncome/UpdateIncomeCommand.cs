@@ -17,6 +17,7 @@ namespace MoneyManagement.Application.Features.RecordFeatures.Commands.UpdateInc
         public string Id { get; set; }
         public decimal Amount { get; set; }
         public string Description { get; set; }
+        public DateTime IncomeAt { get; set; }
     }
 
     public class UpdateIncomeCommandHandler : IRequestHandler<UpdateIncomeCommand, DataResponse<string>>
@@ -40,6 +41,7 @@ namespace MoneyManagement.Application.Features.RecordFeatures.Commands.UpdateInc
             newIncome.Id = income.Id;
             newIncome.Amount = request.Amount;
             newIncome.Description = request.Description;
+            newIncome.IncomeAt = request.IncomeAt;
 
             await _repository.UpdateIncomeAsync(userId, newIncome);
 

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoneyManagement.Application.Interfaces
+namespace MoneyManagement.Application.DTOs
 {
-    public interface IImageService
+    public class UserBalanceDTO
     {
+        public decimal BalanceAmount { get; set; }
     }
 }

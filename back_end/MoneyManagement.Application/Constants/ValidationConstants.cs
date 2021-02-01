@@ -37,5 +37,7 @@ namespace MoneyManagement.Application.Constants
         public static string UniqueUserText = "User already has a budget!";
 
         public static string ShouldExistText = "{PropertyName} does not exist!";
+
+        public static string GreaterThenText = "{PropertyName} must be greater than {ComparisonValue}. You entered '{PropertyValue}'!";
     }
 }

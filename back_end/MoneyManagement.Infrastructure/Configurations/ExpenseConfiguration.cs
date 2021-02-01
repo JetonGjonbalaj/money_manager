@@ -18,6 +18,10 @@ namespace MoneyManagement.Infrastructure.Configurations
             builder.Property(e => e.Id)
                 .ValueGeneratedOnAdd();
 
+            builder.HasOne(e => e.Category)
+                .WithMany(c => c.Expenses)
+                .OnDelete(DeleteBehavior.SetNull);
+
             builder.Property(e => e.Amount)
                 .HasPrecision(18, 2)
                 .IsRequired();

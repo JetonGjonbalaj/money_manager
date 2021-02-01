@@ -15,6 +15,7 @@ namespace MoneyManagement.Application.Features.RecordFeatures.Commands.CreateInc
     {
         public decimal Amount { get; set; }
         public string Description { get; set; }
+        public DateTime IncomeAt { get; set; }
     }
 
     public class CreateIncomeCommandHandlre : IRequestHandler<CreateIncomeCommand, DataResponse<string>>
@@ -33,6 +34,7 @@ namespace MoneyManagement.Application.Features.RecordFeatures.Commands.CreateInc
             var income = new Income();
             income.Amount = request.Amount;
             income.Description = request.Description;
+            income.IncomeAt = request.IncomeAt;
             income.CreatedAt = DateTime.Now;
 
             await _repository.AddIncomeAsync(_authenticatedUserService.UserId, income);

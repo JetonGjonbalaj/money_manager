@@ -20,7 +20,7 @@ namespace BackEndAPI.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost("[action]")]
-        public async Task<IActionResult> Create([FromBody] CreateCategoryCommand command)
+        public async Task<IActionResult> Create([FromForm] CreateCategoryCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
@@ -31,7 +31,7 @@ namespace BackEndAPI.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("[action]/{id}")]
-        public async Task<IActionResult> Update(string id, [FromBody] UpdateCategoryCommand command)
+        public async Task<IActionResult> Update(string id, [FromForm] UpdateCategoryCommand command)
         {
             if (id != command.Id)
             {

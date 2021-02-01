@@ -1,4 +1,5 @@
-﻿using MoneyManagement.Domain.Entities;
+﻿using MoneyManagement.Application.DTOs;
+using MoneyManagement.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,8 @@ namespace MoneyManagement.Application.Interfaces
         Task AddIncomeAsync(string userId, Income income);
         Task UpdateIncomeAsync(string userId, Income income);
         Task DeleteIncomeAsync(string userId, Income income);
+        Task<UserBalanceDTO> GetUserBalance(string userId);
+        Task<UpcomingExpensesDTO> GetUserUpcomingExpenses(string userId);
+        Task<ICollection<RecordsByDateDTO>> GetUserRecordsByDate(string userId);
     }
 }

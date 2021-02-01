@@ -12,6 +12,8 @@ namespace MoneyManagement.Infrastructure.Seed
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
+            // Email: admin@admin.com
+            // Password: Admin00.
             modelBuilder.Entity<UserIdentityModel>()
                 .HasData(
                     new UserIdentityModel()
@@ -22,7 +24,7 @@ namespace MoneyManagement.Infrastructure.Seed
                         Email = "admin@admin.com",
                         NormalizedEmail = "ADMIN@ADMIN.COM",
                         EmailConfirmed = true,
-                        PasswordHash = "AQAAAAEAACcQAAAAEFbPDbmUSWpXHcRKUgW5l3YTOkJ5tr3g+3wtH8KJcuNXYBzxFGG7Z5R5i4fmof5IwQ==",
+                        PasswordHash = "AQAAAAEAACcQAAAAEPVoyzBl+wXW1eoR2yaIuUZXUOUpGxbp5MUmDNPx43n5eSAZG4bd4Ry7uJ+rKJOAZg==",
                         SecurityStamp = "GKGJTG4HMUVSX467KB5YVH2QK2CGLJQ5",
                         ConcurrencyStamp = "0d05cc2b-13ea-44d5-b6ee-dfbdd3cbdb45",
                         PhoneNumber = null,

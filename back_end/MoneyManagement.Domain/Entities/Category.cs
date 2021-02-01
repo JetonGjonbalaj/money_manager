@@ -12,6 +12,6 @@ namespace MoneyManagement.Domain.Entities
         public string Name { get; set; }
 
         public CategoryImage CategoryImage { get; set; }
-        public ExpenseCategory ExpenseCategory { get; set; }
+        public ICollection<Expense> Expenses { get; set; }
     }
 }

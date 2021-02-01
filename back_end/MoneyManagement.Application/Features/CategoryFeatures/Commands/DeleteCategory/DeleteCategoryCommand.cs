@@ -20,17 +20,23 @@ namespace MoneyManagement.Application.Features.CategoryFeatures.Commands.DeleteC
     public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryCommand, Response>
     {
         private readonly ICategoryRepositoryAsync _repository;
+        private readonly IFileService _imageService;
 
-        public DeleteCategoryCommandHandler(ICategoryRepositoryAsync repository)
+        public DeleteCategoryCommandHandler(ICategoryRepositoryAsync repository, IFileService imageService)
         {
             _repository = repository;
+            _imageService = imageService;
         }
 
         public async Task<Response> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
         {
-            var category = await _repository.GetByIdAsync(request.Id);
+            var category = await _repository.GetCategoryAsync(request.Id);
 
             if (category == null) throw new ApiException("Category doesn't exist!");
+
+            var imageName = category.CategoryImage?.Image?.ImageName;
+
+            _imageService.DeleteImage(imageName);
 
             await _repository.DeleteAsync(category);
 

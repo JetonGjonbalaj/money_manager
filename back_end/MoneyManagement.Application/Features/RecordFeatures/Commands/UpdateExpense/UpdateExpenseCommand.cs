@@ -39,20 +39,12 @@ namespace MoneyManagement.Application.Features.RecordFeatures.Commands.UpdateExp
 
             if (expense == null) throw new ApiException("Expense doesn't exist!");
 
-            var newExpenseCategory = new ExpenseCategory();
-            newExpenseCategory.CategoryId = request.CategoryId;
-
-            if (expense.ExpenseCategory != null)
-            {
-                newExpenseCategory.Id = expense.ExpenseCategory.Id;
-            }
-
             var newExpense = new Expense();
             newExpense.Id = expense.Id;
             newExpense.Amount = request.Amount;
             newExpense.Description = request.Description;
             newExpense.ExpendedAt = request.ExpendedAt;
-            newExpense.ExpenseCategory = newExpenseCategory;
+            newExpense.CategoryId = request.CategoryId;
 
             await _repository.UpdateExpenseAsync(userId, newExpense);
 
