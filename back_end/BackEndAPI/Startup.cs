@@ -28,7 +28,6 @@ namespace BackEndAPI
             services.AddPersistence(Configuration);
             services.AddSwaggerExtension();
             services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
-            services.AddTransient<IFileService, FileService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,7 +42,7 @@ namespace BackEndAPI
                 app.UseExceptionHandler("/error");
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();

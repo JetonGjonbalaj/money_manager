@@ -54,6 +54,7 @@ namespace MoneyManagement.Infrastructure
             services.AddTransient<ICategoryRepositoryAsync, CategoryRepositoryAsync>();
             services.AddTransient<IRecordRepositoryAsync, RecordRepositoryAsync>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IFileService, FileService>();
         }
     }
 }
