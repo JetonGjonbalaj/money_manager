@@ -25,6 +25,18 @@ namespace MoneyManagement.Infrastructure.Repositories
             return await _categories.AnyAsync(c => c.Id == id);
         }
 
+        public async Task<ICollection<CategoryDTO>> GetAllCategoriesAsync()
+        {
+            return await _categories
+                .Select(c => 
+                    new CategoryDTO() { 
+                        Id = c.Id, 
+                        Name = c.Name, 
+                        ImageName = c.CategoryImage.Image.ImageName, 
+                        ImageTitle = c.CategoryImage.Image.ImageTitle })
+                .ToListAsync();
+        }
+
         public async Task<Category> GetCategoryAsync(string id)
         {
             return await _categories.Include(c => c.CategoryImage).ThenInclude(ci => ci.Image).SingleOrDefaultAsync(c => c.Id == id);

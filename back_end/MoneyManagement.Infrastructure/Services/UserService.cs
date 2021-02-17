@@ -46,6 +46,7 @@ namespace MoneyManagement.Infrastructure.Services
 
             var claims = new[]
             {
+                new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id)
             };
 

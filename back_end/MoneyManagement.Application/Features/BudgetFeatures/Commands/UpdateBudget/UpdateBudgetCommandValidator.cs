@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoneyManagement.Application.Features.BudgetFeatures.UpdateBudget
+namespace MoneyManagement.Application.Features.BudgetFeatures.Commands.UpdateBudget
 {
     public class UpdateBudgetCommandValidator : AbstractValidator<UpdateBudgetCommand>
     {

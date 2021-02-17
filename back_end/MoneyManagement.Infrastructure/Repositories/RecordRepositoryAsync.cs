@@ -142,6 +142,7 @@ namespace MoneyManagement.Infrastructure.Repositories
                 .Where(e => e.Record.UserId == userId)
                 .Select(e => 
                     new RecordDTO() {
+                        Id = e.Id,
                         Description = e.Description,
                         Amount = e.Amount,
                         DateTime = e.ExpendedAt,
@@ -153,6 +154,7 @@ namespace MoneyManagement.Infrastructure.Repositories
                 .Select(i => 
                     new RecordDTO()
                     {
+                        Id = i.Id,
                         Description = i.Description,
                         Amount = i.Amount,
                         DateTime = i.IncomeAt,

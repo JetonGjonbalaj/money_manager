@@ -10,6 +10,7 @@ namespace MoneyManagement.Application.Interfaces
 {
     public interface ICategoryRepositoryAsync : IRepositoryAsync<Category>
     {
+        Task<ICollection<CategoryDTO>> GetAllCategoriesAsync();
         Task<Category> GetCategoryAsync(string id);
         Task<bool> HasUniqueNameAsync(string name);
         Task<bool> CategoryIdExistsAsync(string id);

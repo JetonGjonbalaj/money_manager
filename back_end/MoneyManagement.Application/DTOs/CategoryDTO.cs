@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace MoneyManagement.Application.DTOs
 {
-    public class RecordDTO
+    public class CategoryDTO
     {
         public string Id { get; set; }
-        public string Description { get; set; }
-        public DateTime DateTime { get; set; }
-        public decimal Amount { get; set; }
-        public string Type { get; set; }
+        public string Name { get; set; }
+        public string ImageTitle { get; set; }
+        public string ImageName { get; set; }
     }
 }

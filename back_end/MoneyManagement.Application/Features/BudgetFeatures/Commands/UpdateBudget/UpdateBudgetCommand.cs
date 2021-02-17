@@ -9,34 +9,37 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MoneyManagement.Application.Features.BudgetFeatures.DeleteBudget
+namespace MoneyManagement.Application.Features.BudgetFeatures.Commands.UpdateBudget
 {
-    public class DeleteBudgetCommand : IRequest<Response>
+    public class UpdateBudgetCommand : IRequest<DataResponse<string>>
     {
         public string Id { get; set; }
+        public decimal Amount { get; set; }
     }
 
-    public class DeleteBudgetCommandHandler : IRequestHandler<DeleteBudgetCommand, Response>
+    public class UpdateBudgetCommandHandler : IRequestHandler<UpdateBudgetCommand, DataResponse<string>>
     {
         private readonly IBudgetRepositoryAsync _repository;
         private readonly IAuthenticatedUserService _authenticatedUser;
 
-        public DeleteBudgetCommandHandler(IBudgetRepositoryAsync repository, IAuthenticatedUserService authenticatedUser)
+        public UpdateBudgetCommandHandler(IBudgetRepositoryAsync repository, IAuthenticatedUserService authenticatedUser)
         {
             _repository = repository;
             _authenticatedUser = authenticatedUser;
         }
 
-        public async Task<Response> Handle(DeleteBudgetCommand request, CancellationToken cancellationToken)
+        public async Task<DataResponse<string>> Handle(UpdateBudgetCommand request, CancellationToken cancellationToken)
         {
             var userId = _authenticatedUser.UserId;
             var budget = await _repository.GetUserBudget(userId, request.Id);
 
             if (budget == null) throw new ApiException("Budget doesn't exist!");
 
-            await _repository.DeleteAsync(budget);
+            budget.Amount = request.Amount;
 
-            return new Response("Budget deleted successfully!", true);
+            await _repository.UpdateAsync(budget);
+
+            return new DataResponse<string>("Budget updated successfully!");
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MoneyManagement.Application.Pagination
+namespace MoneyManagement.Application.Filters
 {
     public class PaginationFilter
     {

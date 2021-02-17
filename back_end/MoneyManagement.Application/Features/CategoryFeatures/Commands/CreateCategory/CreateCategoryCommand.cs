@@ -34,7 +34,7 @@ namespace MoneyManagement.Application.Features.CategoryFeatures.Commands.CreateC
 
         public async Task<DataResponse<string>> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
-            var imageName = $"{Guid.NewGuid()}-{DateTime.Now.Ticks}{Path.GetExtension(request.ImageFile.FileName).ToLower()}";
+            var imageName = $"Images/{Guid.NewGuid()}-{DateTime.Now.Ticks}{Path.GetExtension(request.ImageFile.FileName).ToLower()}";
             await _imageService.SaveImage(imageName, request.ImageFile);
 
             var image = new Image();

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoneyManagement.Application.Features.BudgetFeatures.DeleteBudget
+namespace MoneyManagement.Application.Features.BudgetFeatures.Commands.DeleteBudget
 {
     public class DeleteBudgetCommandValidator : AbstractValidator<DeleteBudgetCommand>
     {

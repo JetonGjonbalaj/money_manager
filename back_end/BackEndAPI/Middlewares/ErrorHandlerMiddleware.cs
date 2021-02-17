@@ -30,9 +30,8 @@ namespace BackEndAPI.Middlewares
                 var response = context.Response;
                 response.ContentType = "application/json";
 
-                var responseModel = new Response()
+                var responseModel = new ErrorResponse()
                 {
-                    Succeeded = false,
                     Message = ex.Message
                 };
 

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MoneyManagement.Application.Features.BudgetFeatures.CreateBudget
+namespace MoneyManagement.Application.Features.BudgetFeatures.Commands.CreateBudget
 {
     public class CreateBudgetCommand : IRequest<DataResponse<string>>
     {

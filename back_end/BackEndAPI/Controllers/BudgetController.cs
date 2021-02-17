@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MoneyManagement.Application.Exceptions;
-using MoneyManagement.Application.Features.BudgetFeatures.CreateBudget;
-using MoneyManagement.Application.Features.BudgetFeatures.DeleteBudget;
-using MoneyManagement.Application.Features.BudgetFeatures.UpdateBudget;
+using MoneyManagement.Application.Features.BudgetFeatures.Commands.CreateBudget;
+using MoneyManagement.Application.Features.BudgetFeatures.Commands.DeleteBudget;
+using MoneyManagement.Application.Features.BudgetFeatures.Commands.UpdateBudget;
 using System;
 using System.Collections.Generic;
 using System.Linq;

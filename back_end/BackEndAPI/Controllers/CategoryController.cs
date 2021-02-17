@@ -4,6 +4,7 @@ using MoneyManagement.Application.Exceptions;
 using MoneyManagement.Application.Features.CategoryFeatures.Commands.CreateCategory;
 using MoneyManagement.Application.Features.CategoryFeatures.Commands.DeleteCategory;
 using MoneyManagement.Application.Features.CategoryFeatures.Commands.UpdateCategory;
+using MoneyManagement.Application.Features.CategoryFeatures.Queries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,19 @@ using System.Threading.Tasks;
 namespace BackEndAPI.Controllers
 {
     [Authorize]
-    public class CategoryController : BaseApiController
+    public class CategoriesController : BaseApiController
     {
+
+        /// <summary>
+        /// Retrieves all categories
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> Categories()
+        {
+            return Ok(await Mediator.Send(new AllCategoriesQuery()));
+        }
+
         /// <summary>
         /// Creates a new category
         /// </summary>

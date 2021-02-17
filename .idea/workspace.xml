@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ccdfda2-246d-4d51-8c10-4ef3fc8f8a04" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/lib/redux/app_reducer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/lib/redux/app_reducer.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front_end/lib/redux/app_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/lib/redux/app_state.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/lib/redux/theme/middleware/theme_middleware.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/lib/redux/theme/reducers/change_theme_reducer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/lib/redux/theme/reducers/change_theme_reducer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/lib/redux/theme/theme_reducer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/lib/redux/theme/theme_reducer.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front_end/lib/redux/theme/theme_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/lib/redux/theme/theme_state.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/lib/screens/forgot_password/forgot_password_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/lib/screens/forgot_password/forgot_password_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/lib/screens/homepage/homepage_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/lib/screens/homepage/homepage_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/lib/screens/login/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/lib/screens/login/login_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/lib/screens/login/login_viewmodel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/lib/screens/login/login_viewmodel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/lib/services/theme_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/lib/services/theme_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
