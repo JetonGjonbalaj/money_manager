@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:money_manager/enums/theme_style.dart';
 
+@immutable
 class ThemeState {
-  ThemeStyle themeStyle;
+  final ThemeStyle themeStyle;
 
   ThemeState({
     @required this.themeStyle,

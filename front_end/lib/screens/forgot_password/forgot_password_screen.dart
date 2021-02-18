@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 
-// Constants
-import '../../utils/constants.dart';
-
-// Components
-import '../../components/layout/layout.dart';
-
 class ForgotPasswordScreen extends StatelessWidget {
   static String routeName = '/forgot_password';
 

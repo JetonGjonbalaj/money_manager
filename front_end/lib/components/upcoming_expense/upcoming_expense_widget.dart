@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:money_manager/services/number_format_service.dart';
 
 // Models
 import '../../models/upcoming_expense.dart';
@@ -14,16 +15,17 @@ class UpcomingExpenseWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomBoxShadow(
+      width: 100,
       child: Column(
         children: <Widget>[
           Text(
-            "${upcomingExpense.daysLeft}",
+            upcomingExpense.description, //${/*upcomingExpense.daysLeft*/}
             style: Theme.of(context).textTheme.bodyText2,
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 10),
           Text(
-            "-\$ ${upcomingExpense.expense}",
+            NumberFormatService.formatToPrice(upcomingExpense.amount), //${/*upcomingExpense.expense*/}
             style: Theme.of(context).textTheme.bodyText1,
             textAlign: TextAlign.center,
           )

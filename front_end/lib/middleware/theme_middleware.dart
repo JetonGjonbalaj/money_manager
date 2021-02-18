@@ -10,13 +10,11 @@ void themeMiddleware(Store<AppState> store, action, NextDispatcher next) async {
     ThemeService.getTheme()
       .then((theme) => next(ChangeThemeAction(themeStyle: theme)))
       .catchError((error) => print("Something bad happened: $error"));
-    return;
   }
   if (action is SetThemeAction) {
     ThemeService.setTheme(action.themeStyle)
       .then((value) => next(ChangeThemeAction(themeStyle: action.themeStyle)))
       .catchError((error) => print("Something bad happened: $error"));
-    return;
   }
 
   next(action);
