@@ -124,7 +124,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
   Widget build(BuildContext context) {
     return StoreConnector(
       onInit: (Store<AppState> store) {
-        store.dispatch(FetchCategoriesAction());
+        // store.dispatch(FetchCategoriesAction());
       },
       converter: (Store<AppState> store) {
         _dropdownMenuItems = List<DropdownMenuItem<Category>>();

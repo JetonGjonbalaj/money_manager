@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
       onInit: (store) {
         store.dispatch(FetchThemeAction());
         store.dispatch(FetchUserAction());
+        store.dispatch(FetchCategoriesAction());
         var tokenExpired = store.state.authState?.loginData?.expireDate?.isBefore(DateTime.now()) ?? false;
         if (tokenExpired) store.dispatch(LogoutAction());
       },
